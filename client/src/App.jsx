@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <h1>creted new branch features</h1>
+    <h1>Hello Word LMS</h1>
   )
 }
 
