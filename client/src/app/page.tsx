@@ -18,7 +18,11 @@ export default function Home() {
           </p>
         </div>
       </main>
+    
       <FooterPage></FooterPage>
     </div>
   );
 }
+
+
+// addded some code to the page.tsx file
