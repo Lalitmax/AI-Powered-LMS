@@ -1,0 +1,317 @@
+:root{
+    --text-btn-color:#fff;
+    --body-background-color:white;
+    --icon-close-sbtn-register-color:rgb(209, 198, 250);
+}
+body {
+    height: 100vh;
+    width: 100wh;
+    /* background-color: blue; */
+}
+.wrapper-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(90deg, #020024 0%, rgb(33, 57, 101) 50%, rgb(69, 69, 202) 100%);
+    
+}
+.wrapper{
+    position: relative;
+    max-width: 400px;
+    width: 97%;
+    height: 440px;
+    background-color:#061b37;
+    
+    border: 2px solid white;
+    border-radius: 20px;
+    backdrop-filter: blur(20px) ;
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* transform: scale(0); */
+    transition: transform .3s ease , height .2s ease;
+
+
+
+}
+.wrapper.active-popup {
+    transform: scale(1);
+
+}
+
+.wrapper.active{
+    height: 500px;
+}
+
+.wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    /* background: var(--icon-close-sbtn-register-color); */
+    font-size: 2em;
+    border:1px solid rgb(180, 170, 189);
+    box-shadow:  0 0 3px var(--text-color);
+    
+    color:rgb(136, 136, 223);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 1;
+    cursor: pointer;
+
+}
+.wrapper .form-box{
+    width: 100%;
+    
+    padding: 40px;
+
+}
+
+.wrapper .form-box.login-2{
+    transition: transform .20s ease;
+    transform: translateX(0);
+
+}
+.wrapper.active .form-box.login-2{
+    transition: none;
+    transform: translateX(-400px);
+
+
+}
+.wrapper .form-box.register{
+    position: absolute;
+    transform: translateX(400px);
+
+}
+.wrapper.active .form-box.register{
+    transition: transform .20s ease;
+    transform: translateX(0);
+
+}
+
+.form-box h2{
+    font-size: 2em;
+    color: var(--text-btn-color);
+    font-weight: bold;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border-bottom: 2px solid var(--text-btn-color);
+    margin: 30px 0;
+}
+.input-box label{
+    position: absolute;
+    top:50px;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color:var(--text-btn-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: var(--text-btn-color);
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+    
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top :-5px;
+}
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color:var(--text-btn-color);
+    line-height: 57px;
+}
+.remember-forget{
+
+    font-size: .9em;
+    color:var(--text-btn-color);
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.remember-forget label input{
+
+    accent-color: var(--text-btn-color);
+    margin-right: 3px;
+
+}
+.remember-forget a{
+    color:var(--text-btn-color);
+    text-decoration: none;
+
+}
+.remember-forget a:hover{
+    text-decoration: underline;
+}
+#click {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: rgb(209, 198, 250); /* Black background color */
+
+    color: #151313; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 20px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the click */
+    bottom: 30px; /* 30px from the bottom */
+
+  }
+
+#click.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+.sbtm{
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--icon-close-sbtn-register-color);
+    font-size: 1em;
+    border:1px solid rgb(180, 170, 189);
+    box-shadow:  0 0 2px #fff;
+
+
+
+}
+.login-register{
+    font-size: .9em;
+    color: var(--text-btn-color);
+    text-align: center;
+    font-weight: 550;
+    margin: 25px 0 10px;
+    
+
+
+
+}
+.login-register p a{
+    color: rgb(78, 165, 245);
+    text-decoration: none;
+
+    font-weight: bold;
+    
+
+}
+.login-register p a:hover{
+    text-decoration: underline;
+
+}
+
+
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}}
+
+
+    
+
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    :root{
+        --main-color:rgb(14, 41, 84);
+        --second-color:rgb(31, 110, 140);
+        --text-color:#FFFFFF ;
+        --second-text-color:rgb(136, 136, 223);
+        --footer-text-color:#A2B8EE;
+    }
+    /****************************Header Part *******************************/
+    header {
+        height: 70px;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(90deg, #020024 0%, rgb(33, 57, 101) 50%, var(--main-color) 100%);
+        position: fixed;
+        box-shadow: 0 0 .8rem #0ef;
+    }
+    
+    
+    header{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+    }
+
+    .header-container {
+        height: 36px;
+        width :100%;
+        margin-top: 6px;
+        /* background-color: white; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      
+     
+    }
+    .left-logo {
+        color: var(--text-color);
+        text-decoration: none;
+
+    }
+
+    .left-logo h1 {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 23px;
+        font-weight: bold;
+        
+    }
