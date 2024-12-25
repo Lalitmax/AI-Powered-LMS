@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { Header } from "../components/Header";
+import { Header } from "../components/HeaderPage";
 import { FooterPage } from "../components/FooterPage";
-import { Button } from "flowbite-react";
 import MainPage from "@/components/MainPage";
-// import '@/css/style.css'
+
 
 export default function Home() {
   return (

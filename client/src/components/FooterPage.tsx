@@ -1,7 +1,7 @@
 "use client";
 
 import { BsGithub, BsTwitter, BsInstagram, BsLinkedin } from "react-icons/bs";
-import '@/css/style.css'
+import '@/styles/style.css'
 
 
 export function FooterPage() {
