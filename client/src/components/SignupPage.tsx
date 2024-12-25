@@ -13,9 +13,9 @@ const SignupPage = () => {
     if (!isClient) return null;
 
     return (
-        <Card className="h-[28rem] w-[28rem] p-5">
+        <Card className="h-[29rem] w-[28rem] p-3">
 
-            <form className="flex flex-col gap-5">
+            <form className="flex flex-col gap-4">
 
                 <div>
                     <div className="mb-2 block">
@@ -40,6 +40,10 @@ const SignupPage = () => {
                     <Label htmlFor="remember">Remember me</Label>
                 </div>
                 <Button type="submit">Submit</Button>
+                <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                if Registered?<a className="ml-1 text-blue-700 hover:underline dark:text-blue-500" href="/login/">
+                        Login.</a>
+                </div>
             </form>
         </Card>
     );

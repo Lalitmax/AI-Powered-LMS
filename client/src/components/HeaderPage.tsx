@@ -2,24 +2,33 @@
 import Image from "next/image";
 import { Button, Avatar, Dropdown, Navbar } from "flowbite-react";
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 export function Header() {
   const [userLogged, setUserLogged] = useState(false);
 
+  const router = useRouter();
+
+  function handleLoginPage() {
+    // setUserLogged(true)
+    router.push('/login');
+  };
+
   return (
-    <div className="header">
+    <div className="">
       <Navbar fluid className="fixed w-screen border-b bg-customColor">
-        <Navbar.Brand href="https://flowbite-react.com">
-          <div className="relative mr-3 h-6 sm:h-9 w-6 sm:w-9">
+        <Navbar.Brand href="/">
+          <div className="relative mr-3 h-6 sm:h-9 w-6 sm:w-9" >
             <Image
               src="https://flowbite-react.com/favicon.svg"
               alt="Flowbite Logo"
               fill
               className="object-contain"
+            
             />
           </div>
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite React
+            Learn
           </span>
         </Navbar.Brand>
 
@@ -50,7 +59,7 @@ export function Header() {
           ) : (
 
             <Button
-              onClick={() => setUserLogged(true)}
+              onClick={handleLoginPage}
               color="blue"
             >
               Login
@@ -60,11 +69,12 @@ export function Header() {
         </div>
 
         <Navbar.Collapse className="mr-2">
-          <Navbar.Link href="#" active className="text-lg">
+          <Navbar.Link href="/" active className="text-lg">
             Home
           </Navbar.Link>
-          <Navbar.Link className="text-lg" href="#">Courses</Navbar.Link>
-          <Navbar.Link className="text-lg" href="#">Roadmap</Navbar.Link>
+          <Navbar.Link className="text-lg" href="/courses">Courses</Navbar.Link>
+          <Navbar.Link className="text-lg" href="/roadmap">Roadmap</Navbar.Link>
+          <Navbar.Link className="text-lg" href="/roadmap">DSA Sheets</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>
