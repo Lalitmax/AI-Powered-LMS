@@ -18,7 +18,7 @@ const page = () => {
         <>
             <Header></Header>
 
-            <div className="flex items-center justify-center h-screen w-screen bg-slate-700">
+            <div className="flex items-center justify-center h-screen w-screen bg-[#111827]">
                 <SignupPage></SignupPage>
             </div>
         </>

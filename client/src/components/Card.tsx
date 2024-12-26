@@ -1,22 +1,25 @@
 import React from 'react';
 
 interface CardProps {
+    id: number;
     title: string;
     imageUrl: string;
-    originalPrice: number;
-    discountedPrice: number;
-    discountPercentage: number;
+    description: string;
+    customOnClick: (id: number) => void; // Renamed prop
 }
 
 const Card: React.FC<CardProps> = ({
+    id,
     title,
     imageUrl,
-    originalPrice,
-    discountedPrice,
-    discountPercentage,
+    description,
+    customOnClick,
 }) => {
     return (
-        <div className=" cursor-pointer  max-w-[400px] rounded-lg border bg-neutral-100 dark:bg-[#181a1b] hover:shadow-2xl dark:border-[#353a3c] shadow-md p-5 transition-all duration-300 select-none">
+        <div
+            className="cursor-pointer max-w-[390px] rounded-lg border bg-neutral-100 dark:bg-[#181a1b] hover:shadow-2xl dark:border-[#353a3c] shadow-md p-3 transition-all duration-300 select-none"
+            onClick={() => customOnClick(id)} // Call customOnClick with the card's id
+        >
             {/* Image Section */}
             <div className="max-h-52 w-full overflow-hidden rounded-lg mb-4">
                 <img
@@ -36,13 +39,9 @@ const Card: React.FC<CardProps> = ({
                 </h3>
                 <div className="h-[2px] w-3/4 bg-gray-300 opacity-10"></div>
 
-                {/* Price Section */}
-                <div className="mt-4 flex items-center gap-3 font-bold">
-                    <p className="text-base text-[#6e96cf]">₹{discountedPrice}</p>
-                    <p className="text-base text-gray-500 line-through">₹{originalPrice}</p>
-                    <p className="rounded-md bg-green-500 text-white px-2 py-1 text-sm">
-                        {discountPercentage}% off
-                    </p>
+                {/* Description Section */}
+                <div className="mt-1 flex items-center gap-3 font-bold">
+                    <p className="text-base text-gray-500">{description}</p>
                 </div>
             </div>
         </div>
