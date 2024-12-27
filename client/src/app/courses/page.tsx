@@ -2,9 +2,15 @@
 import React from 'react';
 import Card from '@/components/Card';
 import { Header } from '@/components/HeaderPage';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { useDynamicPathname } from '@/hooks';
+
 const Page = () => {
     const router = useRouter();
+    const { pathname, updatePathname } = useDynamicPathname();
+    const courses = useAppSelector((state) => state.courseData.courses);
+
     const handleCardClick = (id: number) => {
         console.log(`Card clicked with ID: ${id}`);
         router.push(`/courses/subject/${id}`);
@@ -13,35 +19,22 @@ const Page = () => {
     return (
         <>
             <Header />
-            <div className="flex-wrap flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 pt-16 gap-x-14 gap-y-4">
-                <Card
-                    id={1}
-                    title="Complete DSA Roadmap"
-                    imageUrl="/assetsa/courses/dsaCheck.png"
-                    description="Best Course"
-                    customOnClick={handleCardClick} // Updated prop name
-                />
-                <Card
-                    id={2}
-                    title="Core Subjects"
-                    imageUrl="/assetsa/courses/corejubjects.png"
-                    description="Best Course"
-                    customOnClick={handleCardClick} // Updated prop name
-                />
-                <Card
-                    id={3}
-                    title="MERN Stack"
-                    imageUrl="/assetsa/courses/mernStack.png"
-                    description="Best Course"
-                    customOnClick={handleCardClick} // Updated prop name
-                />
-                <Card
-                    id={4}
-                    title="Core Java"
-                    imageUrl="/assetsa/courses/coreJava.png"
-                    description="Best Course"
-                    customOnClick={handleCardClick} // Updated prop name
-                />
+            <div className="flex-wrap flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-7 gap-x-6 gap-y-5  px-3">
+
+                {
+                    courses.map((e) => {
+                        return <Card
+                            key={e.id}
+                            id={e.id}
+                            title={e.name}
+                            imageUrl={e.imageUrl}
+                            description={e.description}
+                            customOnClick={handleCardClick}
+                        />
+                    })
+                }
+
+
             </div>
         </>
     );

@@ -1,18 +1,27 @@
 "use client";
 import Image from "next/image";
 import { Button, Avatar, Dropdown, Navbar } from "flowbite-react";
-import { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { useRouter, usePathname } from 'next/navigation';
+import { useDynamicPathname } from "@/hooks";
 
 export function Header() {
   const [userLogged, setUserLogged] = useState(false);
-
+  const { pathname, updatePathname } = useDynamicPathname();
+  const [currentRout, setCurrentPathName] = useState('');
   const router = useRouter();
 
   function handleLoginPage() {
     // setUserLogged(true)
     router.push('/login');
   };
+
+  useEffect(() => {
+    console.log('courses ciked', pathname)
+    setCurrentPathName(pathname);
+  }, [pathname])
+
+
 
   return (
     <div className="">
@@ -24,7 +33,7 @@ export function Header() {
               alt="Flowbite Logo"
               fill
               className="object-contain"
-            
+
             />
           </div>
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
@@ -69,12 +78,12 @@ export function Header() {
         </div>
 
         <Navbar.Collapse className="mr-2">
-          <Navbar.Link href="/" active className="text-lg">
+          <Navbar.Link href="/" active={currentRout === "/"} className={`text-lg ${currentRout === '/courses' ? "text-blue-500" : ""}`}>
             Home
           </Navbar.Link>
-          <Navbar.Link className="text-lg" href="/courses">Courses</Navbar.Link>
-          <Navbar.Link className="text-lg" href="/roadmap">Roadmap</Navbar.Link>
-          <Navbar.Link className="text-lg" href="/roadmap">DSA Sheets</Navbar.Link>
+          <Navbar.Link active={currentRout === "/courses" || currentRout.includes("/courses/subject")} className={`text-lg ${currentRout === '/courses' ? "text-blue-500" : ""}`} href="/courses">Courses</Navbar.Link>
+          <Navbar.Link active={currentRout === "/roadmap"} className={`text-lg ${currentRout === '/courses' ? "text-blue-500" : ""}`} href="/roadmap">Roadmap</Navbar.Link>
+          <Navbar.Link active={currentRout === "/roadmap"} className={`text-lg ${currentRout === '/courses' ? "text-blue-500" : ""}`} href="/roadmap">DSA Sheets</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

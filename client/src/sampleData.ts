@@ -3,6 +3,7 @@ const courses = [
     {
         id: 1,
         name: "DSA",
+        imageUrl : "",
         description: "Best free course and organized"
     },
 
@@ -19,7 +20,7 @@ const courses = [
     },
 
     {
-        id: 3,
+        id: 4,
         name: "Core Java",
         description: "Best free course and organized"
     }
@@ -33,12 +34,46 @@ const subjectNames = [
             {
                 name: "DSA With Java",
                 id: 1,
-                content: []
+                imageUrl : "",
+                description: "dec",
+                videoInfo: [
+                    {
+                        id: 1,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+
+                    },
+                    {
+                        id: 2,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+
+                    }
+                ]
             },
             {
-                name: "DSA With Java",
+                name: "DSA With Cpp",
                 id: 2,
-                content: []
+                imageUrl : "",
+                description: "dec",
+                videoInfo: [
+                    {
+                        id: 1,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+
+                    },
+                    {
+                        id: 2,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+
+                    }
+                ]
             }
         ]
     },
@@ -46,22 +81,66 @@ const subjectNames = [
     {
         name: "Core Jubjects",
         id: 2,
+        imageUrl : "",
+        description: "dec",
         subjects: [
+
             {
                 name: "Operating System",
                 id: 1,
-                content: []
-            }
+                videoInfo: [
+                    {
+                        id: 1,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+                    },
+                    {
+                        id: 2,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+                    }
+                ]
+            },
+
             {
                 name: "DBMS",
                 id: 2,
-                content: []
-            }
+                videoInfo: [
+                    {
+                        id: 1,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+                    },
+                    {
+                        id: 2,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+                    }
+                ]
+            },
+
 
             {
                 name: "Computer Networks",
-                id: 2,
-                content: []
+                id: 3,
+                videoInfo: [
+                    {
+                        id: 1,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+                    },
+                    {
+                        id: 2,
+                        title: "Array",
+                        urls: "https",
+                        description: "description"
+                    }
+                ]
             }
         ]
 
