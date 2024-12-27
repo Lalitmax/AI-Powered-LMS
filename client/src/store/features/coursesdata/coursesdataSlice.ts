@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-interface VideoContent {
+export interface VideoContent {
     id: number
     title: string
     url: string
     description: string
 }
 
-interface Subject {
+export interface Subject {
     id: number
     name: string
     imageUrl: string
@@ -16,14 +16,14 @@ interface Subject {
     videoContent: VideoContent[]
 }
 
-interface SubjectName {
+export interface SubjectName {
     id: number
     name: string
 
     subjects: Subject[]
 }
 
-interface Course {
+export interface Course {
     id: number
     name: string
     description: string

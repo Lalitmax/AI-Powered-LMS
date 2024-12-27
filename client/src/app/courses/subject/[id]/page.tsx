@@ -8,7 +8,10 @@ import { useAppSelector } from '@/store/hooks';
 import { useAppDispatch } from '@/store/hooks';
 import CardTopic from '@/components/CardTopic';
 import { Header } from '@/components/HeaderPage';
+import { Subject, SubjectName } from '@/store/features/coursesdata/coursesdataSlice';
 // import {  } from '@/store/features/coursesdata/coursesdataSlice';
+
+
 
 const page = () => {
     const courseData = useAppSelector((state: RootState) => state.courseData.courses)
@@ -17,7 +20,7 @@ const page = () => {
     const id = params?.id || 0;
 
     const subjectNames = useAppSelector((state: RootState) => state.courseData.subjectNames);
-    const subjects = subjectNames.find((e) => e.id == id)?.subjects || [];
+    const subjects = subjectNames.find((e: SubjectName) => e.id == id)?.subjects || [];
 
     console.log(subjects)
 
@@ -28,7 +31,7 @@ const page = () => {
             <Header></Header>
             <div className="flex-wrap flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-7 gap-x-6 gap-y-5  px-3">
 
-                {subjects.map((e) => {
+                {subjects.map((e: Subject) => {
                     return <CardTopic key={e.id} imageUrl={e.imageUrl} title={e.name} />
                 })}
 

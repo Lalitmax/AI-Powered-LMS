@@ -6,6 +6,14 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { useDynamicPathname } from '@/hooks';
 
+interface Course {
+    id: number
+    name: string
+    description: string
+    imageUrl: string
+}
+
+
 const Page = () => {
     const router = useRouter();
     const { pathname, updatePathname } = useDynamicPathname();
@@ -22,7 +30,7 @@ const Page = () => {
             <div className="flex-wrap flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-7 gap-x-6 gap-y-5  px-3">
 
                 {
-                    courses.map((e) => {
+                    courses.map((e: Course) => {
                         return <Card
                             key={e.id}
                             id={e.id}
