@@ -1,15 +1,73 @@
+// pages/index.tsx
+"use client"
 import { Header } from '@/components/HeaderPage'
-import VidoeSidebar from '@/components/VidoeSidebar'
-import React from 'react'
+import RightSidebar from '@/components/RightSidebar';
+import Sidebar from '@/components/Sidebar'
+import VideoPlayer from '@/components/VideoPlayer';
+import React, { useEffect, useRef, useState } from 'react'
 
-const page = () => {
-    return (<>
-        <Header></Header>
-        <VidoeSidebar />
-        <div className=' bg-[#111827] h-screen w-screen flex items-center justify-center'>
-            <h1 className='text-white h-10 w-10 text-xl'>Video</h1>
-        </div>
-    </>)
-}
+const Page = () => {
 
-export default page
+    const [isOpen, setIsOpen] = useState(false);
+    const [sidebarWidth, setSidebarWidth] = useState(0);
+    const [rightBarIsOpen, setRightBarIsOpen] = useState(false);
+    const sidebarRef = useRef<HTMLDivElement | null>(null); // Explicitly define the type
+    const [isClient, setIsClient] = useState(false);
+
+    const toggleSidebar = () => {
+
+        setIsOpen((prev) => !prev);
+        setRightBarIsOpen(false);
+
+
+    }
+
+    function handleClick() {
+        setIsOpen(false);
+        setRightBarIsOpen(prev => !prev);
+    }
+
+    useEffect(() => {
+
+        const updateSidebarWidth = () => {
+            if (sidebarRef.current) {
+                setSidebarWidth(sidebarRef.current.offsetWidth);
+            }
+        };
+
+        updateSidebarWidth();
+
+
+        window.addEventListener("resize", updateSidebarWidth);
+
+        return () => {
+            window.removeEventListener("resize", updateSidebarWidth);
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) return null;
+
+    return (
+        <>
+
+            <Header />
+            <div className="flex pt-14 h-screen w-screen">
+
+                <div className="flex w-full bg-[#111827]">
+                    <Sidebar sidebarRef={sidebarRef} toggleSidebar={toggleSidebar} isOpen={isOpen} />
+
+                    {/* Main Content */}
+                    <VideoPlayer isOpen={isOpen} toggleSidebar={toggleSidebar} sidebarWidth={sidebarWidth} handleClick={handleClick}></VideoPlayer>
+
+                    <RightSidebar isOpen={rightBarIsOpen} toggleSidebar={handleClick} />
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default Page;
