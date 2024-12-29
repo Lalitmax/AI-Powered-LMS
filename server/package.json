@@ -1,15 +1,19 @@
 {
-  "name": "ai-powered-lms",
+  "name": "server",
   "version": "1.0.0",
-  "description": "The AI-Powered Lecture Doubt Assistant is designed to make learning more interactive and immediate. Instead of waiting for teachers to review doubts later, students can resolve their queries in real-time while watching recorded lectures.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "LMS",
-    "ai-powered-lms"
-  ],
-  "author": "Lalit Max",
-  "license": "ISC"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.2",
+    "nodemon": "^3.1.9"
+  }
 }
