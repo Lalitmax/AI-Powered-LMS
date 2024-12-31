@@ -6,13 +6,14 @@ import { useState } from "react";
 interface CardProps {
     title: string;
     imageUrl: string;
+    callBack: () => void
 }
 
-const CardTopic: React.FC<CardProps> = ({ title, imageUrl }) => {
+const CardTopic: React.FC<CardProps> = ({ title, imageUrl, callBack }) => {
     const [progress, setProgress] = useState(10); // Initial progress value
 
     return (
-        <div className="cursor-pointer max-w-[370px] rounded-lg border bg-neutral-100 dark:bg-[#181a1b] hover:shadow-2xl dark:border-[#353a3c] shadow-md p-[1px] transition-all duration-300 select-none">
+        <div onClick={callBack} className="cursor-pointer max-w-[370px] rounded-lg border bg-neutral-100 dark:bg-[#181a1b] hover:shadow-2xl dark:border-[#353a3c] shadow-md p-[1px] transition-all duration-300 select-none">
             {/* Image Section */}
             <div className="max-h-48 w-full overflow-hidden rounded-t-md rounded-b-sm mb-2">
                 <img
@@ -34,12 +35,12 @@ const CardTopic: React.FC<CardProps> = ({ title, imageUrl }) => {
                 <div className=" mt-2 flex items-center gap-3 font-bold mb-3">
 
                     <p className="text-base text-[#6e96cf]">{progress}%</p>
-                     
+
                     {/* <p className="rounded-md bg-green-500 text-white px-2 py-1 text-sm"> */}
                     <Progress progress={progress} className=" w-[19rem] block" />
                     {/* </p> */}
-                    
-                    
+
+
                 </div>
             </div>
         </div>
