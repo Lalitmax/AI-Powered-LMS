@@ -10,13 +10,13 @@ const port = process.env.PORT;
 
 // CORS Configuration
 const corsOptions = {
-  origin: "*", // Allow all origins
+  origin: "https://ai-learning-management-system.vercel.app", // Allow all origins
   credentials: true, // Allow cookies to be sent
 };
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
 
 dotenv.config();
 connectDB();
