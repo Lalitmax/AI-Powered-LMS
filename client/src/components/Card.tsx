@@ -15,6 +15,8 @@ const Card: React.FC<CardProps> = ({
     description,
     customOnClick,
 }) => {
+
+    
     return (
         <div
             className="cursor-pointer max-w-[390px] rounded-lg border bg-neutral-100 dark:bg-[#181a1b] hover:shadow-2xl dark:border-[#353a3c] shadow-md p-3 transition-all duration-300 select-none"

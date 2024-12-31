@@ -3,46 +3,42 @@
 import { Accordion } from "flowbite-react";
 import VideoCard from "./VideoCard";
 
-export function AccordianComp() {
-    const videoSessions = [
-        {
-            title: "Bonus Live Session 2 (Time Management)",
-            duration: "02:00:46",
-            type: "video",
-        },
-        {
-            title: "Live Mentorship Session 1 (part1)",
-            duration: "53:41",
-            type: "video",
-        },
-        {
-            title: "Live Mentorship Session 1 (part2)",
-            duration: "01:23:55",
-            type: "video",
-        },
-        {
-            title: "Live Mentorship Session 2 (Projects)",
-            duration: "02:09:20",
-            type: "video",
-        },
-    ];
+interface videoSessionsType {
+    title: string
+    url: string
+    id: number
+    description: string
+}
+
+
+interface props {
+    contentList: videoSessionsType[];
+    setVideoUrl: (url: string) => void;
+    setVideoDescription: (url: string) => void;
+    contentListTopics: string[]
+}
+
+
+export function AccordianComp({ contentList, setVideoUrl, setVideoDescription, contentListTopics }: props) {
+    console.log(contentList)
 
     return (
         <Accordion className="rounded-none">
-            
+
             <Accordion.Panel className="rounded-none">
                 <Accordion.Title className="h-14 focus:outline-none focus:ring-0 first:rounded-none">
-                    What is Flowbite?
+                    {contentListTopics[0]}
                 </Accordion.Title>
                 <Accordion.Content className="p-[0px] focus:outline-none ring-0">
-                    {videoSessions.map((session, index) => (
+                    {contentList.map((e, index) => (
                         <VideoCard
                             key={index}
-                            title={session.title}
-                            duration={session.duration}
-                            type={session.type}
-                            isSelected={false} // Replace with dynamic selection logic if needed
-                            onClick={() => console.log(`Clicked on ${session.title}`)} // Handle click logic
+                            title={e.description}
+                            setVideoUrl={setVideoUrl}
+                            url={e.url}
+                            setVideoDescription={setVideoDescription}
+
+
                         />
                     ))}
                 </Accordion.Content>
@@ -50,17 +46,18 @@ export function AccordianComp() {
 
             <Accordion.Panel className="rounded-none">
                 <Accordion.Title className="h-14 focus:outline-none focus:ring-0">
-                    What is Flowbite?
+                {contentListTopics[1]}
                 </Accordion.Title>
                 <Accordion.Content className="p-[2px] focus:outline-none ring-0">
-                    {videoSessions.map((session, index) => (
+                    {contentList.map((e, index) => (
                         <VideoCard
                             key={index}
-                            title={session.title}
-                            duration={session.duration}
-                            type={session.type}
-                            isSelected={false} // Replace with dynamic selection logic if needed
-                            onClick={() => console.log(`Clicked on ${session.title}`)} // Handle click logic
+                            title={e.title}
+                            setVideoUrl={setVideoUrl}
+                            url={e.url}
+                            setVideoDescription={setVideoDescription}
+
+
                         />
                     ))}
                 </Accordion.Content>
@@ -68,17 +65,18 @@ export function AccordianComp() {
 
             <Accordion.Panel className="rounded-none">
                 <Accordion.Title className="h-14 focus:outline-none focus:ring-0">
-                    What is Flowbite?
+                {contentListTopics[2]}
                 </Accordion.Title>
                 <Accordion.Content className="p-[2px] focus:outline-none ring-0">
-                    {videoSessions.map((session, index) => (
+                    {contentList.map((e, index) => (
                         <VideoCard
                             key={index}
-                            title={session.title}
-                            duration={session.duration}
-                            type={session.type}
-                            isSelected={false} // Replace with dynamic selection logic if needed
-                            onClick={() => console.log(`Clicked on ${session.title}`)} // Handle click logic
+                            title={e.title}
+                            setVideoUrl={setVideoUrl}
+                            url={e.url}
+                            setVideoDescription={setVideoDescription}
+
+
                         />
                     ))}
                 </Accordion.Content>

@@ -1,7 +1,15 @@
+
+"use client"
 import React from 'react';
 import '@/styles/style.css'
-
+import { useRouter } from 'next/navigation';
 const MainPage = () => {
+
+    const router = useRouter();
+    function handleClick() {
+        router.push('/courses');
+
+    }
     return (
         <div className="main-content flex justify-center">
             <div className="content-list">
@@ -14,24 +22,16 @@ const MainPage = () => {
                             Complete Roadmap to Become a Software Engineer <span>Structured Manner</span>
                         </p>
                         <div className="hero-button">
-                            <button
+                            <button onClick={() =>handleClick() }
                                 className="btn"
                                 style={{
                                     backgroundImage: "linear-gradient(90deg, #020024 0%, rgb(33, 57, 101) 60%, var(--main-color) 100%)",
                                     color: "#fff",
                                 }}
                             >
-                                Mocombo
+                                Get Start
                             </button>
-                            <button
-                                className="btn"
-                                style={{
-                                    backgroundColor: "rgb(252, 253, 255)",
-                                    border: "1px solid rgb(14, 41, 84)",
-                                }}
-                            >
-                                B Tech
-                            </button>
+                       
                         </div>
                     </div>
                     <div className="right-hero">

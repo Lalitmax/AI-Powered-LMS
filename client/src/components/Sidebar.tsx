@@ -2,12 +2,29 @@ import React from 'react'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 import { AccordianComp } from './AccordianComp'
 
+
+interface videoSessionsType {
+    title: string
+    url: string
+    id: number
+    description: string
+
+}
+
+
 interface props {
     sidebarRef: any
     toggleSidebar: () => void
     isOpen: boolean
+    contentList: videoSessionsType[]
+    setVideoUrl: (url: string) => void;
+    setVideoDescription: (url: string) => void;
+    contentListTopics: string[]
 }
-const Sidebar = ({ sidebarRef, toggleSidebar, isOpen }: props) => {
+
+const Sidebar = ({ sidebarRef, toggleSidebar, isOpen, contentList, contentListTopics, setVideoDescription, setVideoUrl }: props) => {
+
+
     return (
         <div
             ref={sidebarRef}
@@ -23,7 +40,7 @@ const Sidebar = ({ sidebarRef, toggleSidebar, isOpen }: props) => {
 
 
                 </div>
-                <AccordianComp />
+                <AccordianComp contentListTopics = {contentListTopics} setVideoUrl={setVideoUrl} setVideoDescription={setVideoDescription} contentList={contentList} />
             </div>
         </div>
     )

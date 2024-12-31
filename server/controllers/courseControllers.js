@@ -1,7 +1,8 @@
 const Course = require('../models/courseModels');
-
+ 
+// get All courses
 const getCourses = async (req, res) => {
-    console.log(123)
+  console.log("int get couress route")
   try {
     const allCourses = await Course.find();
     console.log(allCourses);
