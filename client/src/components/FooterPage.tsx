@@ -25,32 +25,38 @@ export function FooterPage() {
           <h3>Explore</h3>
           <ul>
             <li>
-              <a href="#">Courses</a>
+              <a href="/courses">Courses</a>
+            </li>
+            
+            <li>
+              <a href="courses/subject/1">Learn DSA</a>
             </li>
             <li>
-              <a href="#">Learn Coding</a>
+              <a href="courses/subject/3">Learn Development</a>
             </li>
             <li>
-              <a href="#">Learn DSA</a>
-            </li>
-            <li>
-              <a href="#">Development</a>
+              <a href="courses/subject/2">Learn Core Subjects</a>
             </li>
           </ul>
         </div>
 
         <div className="contact wd h2-exf">
           <h3>Contact</h3>
-          <a href="#">Universityabc@gmail.com</a>
-          <p>+91 9999-999-999</p>
+          <a href="mailto:Lalitmaxy@gmail.com">Lalitmaxy@gmail.com</a>
+          <p>+91 6202-597-511</p>
+          <a href="mailto:Suryansh.rajs96@gmail.com">Suryansh.rajs96@gmail.com</a>
+          <p>+91 8765-946-737</p>
         </div>
 
         <div className="follow wd h2-exf">
           <h3>Follow Us</h3>
           <div className="social-media">
+            <div>
             <a href="https://github.com/Lalitmax">
               <BsGithub /> GitHub
             </a>
+            
+            </div>
             <a href="https://twitter.com/lalit__max">
               <BsTwitter /> Twitter
             </a>
@@ -63,14 +69,15 @@ export function FooterPage() {
           </div>
         </div>
       </div>
+      
 
       <div className="reserved-footer">
         <p style={{ color: "#fff", fontWeight: "bold" }} className="foo-p">
-          &copy; Copyright @ 2023{" "}
+          Made With {" "}
           <a href="#home">
-            <span>MaxLearn</span>
+            <span>&#x2665;&#xfe0f; </span>
           </a>
-          . All Rights Reserved.
+          by Lalit & Suryansh
         </p>
       </div>
     </footer>
