@@ -1,14 +1,13 @@
 "use client";
 
-import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
+import { Button, Card , Label, TextInput } from "flowbite-react";
 import React, { useRef, useState } from "react";
 import axios from "axios";
 
 function LoginPage() {
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
-    const [rememberMe, setRememberMe] = useState(false);
-
+ 
     const handleEmailChange = () => {
         console.log("Email:", emailRef.current?.value);
     };
@@ -17,9 +16,7 @@ function LoginPage() {
         console.log("Password:", passwordRef.current?.value);
     };
 
-    const handleRememberMeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setRememberMe(event.target.checked);
-    };
+    
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -84,11 +81,7 @@ function LoginPage() {
                     />
                 </div>
                 <div className="flex items-center gap-2">
-                    {/* <Checkbox
-                        id="remember"
-                        checked={rememberMe}
-                        onChange={handleRememberMeChange}
-                    /> */}
+               
                     <Label htmlFor="remember">Remember me</Label>
                 </div>
                 <Button type="submit">Submit</Button>

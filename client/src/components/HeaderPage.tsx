@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button, Avatar, Dropdown, Navbar } from "flowbite-react";
+import { Button, Dropdown, Navbar } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from 'next/navigation'; // Import usePathname
 
