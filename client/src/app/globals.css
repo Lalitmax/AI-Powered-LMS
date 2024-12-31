@@ -26,3 +26,20 @@ body {
   /* background-color: blue; */
 }
  
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Decrease the width */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4b5563; /* Change the color */
+  border-radius: 10px; /* Add rounded corners */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #374151; /* Change color on hover */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #1f2937; /* Scrollbar track color */
+}

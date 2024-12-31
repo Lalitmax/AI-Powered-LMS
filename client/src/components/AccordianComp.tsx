@@ -20,7 +20,7 @@ interface props {
 
 
 export function AccordianComp({ contentList, setVideoUrl, setVideoDescription, contentListTopics }: props) {
-    console.log(contentList)
+    console.log(contentListTopics   )
 
     return (
         <Accordion className="rounded-none">
