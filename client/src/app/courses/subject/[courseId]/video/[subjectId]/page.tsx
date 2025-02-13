@@ -1,13 +1,11 @@
-// pages/index.tsx
 "use client";
 import { Header } from '@/components/HeaderPage';
 import RightSidebar from '@/components/RightSidebar';
 import Sidebar from '@/components/Sidebar';
 import VideoPlayer from '@/components/VideoPlayer';
-import { Subject, SubjectName, VideoContent } from '@/store/features/coursesdata/coursesdataSlice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { setCourses } from '@/store/features/coursesdata/coursesdataSlice';
 import Loader from '@/components/Loader';
@@ -17,15 +15,20 @@ const Page = () => {
     const courseId = parseInt(Array.isArray(params?.courseId) ? params?.courseId[0] : params?.courseId || "0");
     const subjectId = parseInt(Array.isArray(params?.subjectId) ? params?.subjectId[0] : params?.subjectId || "0");
 
-    const router = useRouter();
     const dispatch = useAppDispatch();
 
-    // Selectors to get subject names and video content from Redux store
     const subjectNamesFromRedux = useAppSelector((state) => state.courseData.subjectNames);
-    const subjectNames = subjectNamesFromRedux.find((e: SubjectName) => e.id === courseId)?.subjects || [];
-    const subject = subjectNames.find((e: Subject) => e.id === subjectId);
-    const contentList = subject?.videoContent || [];
-    const contentListTopics = subject?.topics || [];
+    const subjectNames = subjectNamesFromRedux.find((e) => e.id === courseId)?.subjects || [];
+    const subject = subjectNames.find((e) => e.id === subjectId);
+
+    // Memoize contentList and contentListTopics to prevent unnecessary re-renders
+    const contentList = useMemo(() => {
+        return subject?.videoContent || [];
+    }, [subject]);
+
+    const contentListTopics = useMemo(() => {
+        return subject?.topics || [];
+    }, [subject]);
 
     const [isOpen, setIsOpen] = useState(false);
     const [sidebarWidth, setSidebarWidth] = useState(0);
@@ -36,22 +39,21 @@ const Page = () => {
     const [videoDescription, setVideoDescription] = useState<string>('');
     const [loading, setLoading] = useState(false);
 
-    // Fetch video content if it's not present in Redux
+    // Fetch video content if not available in Redux store
     useEffect(() => {
         const fetchVideoContent = async () => {
-            if (contentList.length === 0) { // If no content in Redux, fetch from server
+            if (contentList.length === 0) {
                 setLoading(true);
                 try {
-                    const response = await axios.get('http://localhost:3001/api/courses'); // Replace with your API endpoint
+                    const response = await axios.get('https://ai-powered-lms.onrender.com/api/courses');
                     const fetchedSubjectNames = response.data.courses[0].subjectNames;
 
-                    // Dispatch the data to Redux
                     dispatch(setCourses({ courses: response.data.courses[0].courses, subjectNames: fetchedSubjectNames }));
                     setLoading(false);
                     if (contentList.length > 0) {
                         setVideoUrl(contentList[0].url);
                     }
-                } catch (err: any) {
+                } catch (err) {
                     console.error('Error fetching video content:', err);
                     setLoading(false);
                 }
@@ -75,6 +77,7 @@ const Page = () => {
         setRightBarIsOpen((prev) => !prev);
     }
 
+    // Track the sidebar width on resize
     useEffect(() => {
         const updateSidebarWidth = () => {
             if (sidebarRef.current) {
@@ -96,9 +99,9 @@ const Page = () => {
 
     if (!isClient || loading) {
         return <>
-        <Header />
-        <Loader></Loader>
-        </>
+            <Header />
+            <Loader />
+        </>;
     }
 
     return (
@@ -106,11 +109,23 @@ const Page = () => {
             <Header />
             <div className="flex pt-14 h-screen w-screen">
                 <div className="flex w-full bg-[#111827]">
-                    <Sidebar setVideoDescription={setVideoDescription} setVideoUrl={setVideoUrl} contentListTopics={contentListTopics} contentList={contentList} sidebarRef={sidebarRef} toggleSidebar={toggleSidebar} isOpen={isOpen} />
-
-                    {/* Main Content */}
-                    <VideoPlayer isOpen={isOpen} toggleSidebar={toggleSidebar} sidebarWidth={sidebarWidth} handleClick={handleClick} videoUrl={videoUrl} videoDescription={videoDescription} />
-
+                    <Sidebar
+                        setVideoDescription={setVideoDescription}
+                        setVideoUrl={setVideoUrl}
+                        contentListTopics={contentListTopics}
+                        contentList={contentList}
+                        sidebarRef={sidebarRef}
+                        toggleSidebar={toggleSidebar}
+                        isOpen={isOpen}
+                    />
+                    <VideoPlayer
+                        isOpen={isOpen}
+                        toggleSidebar={toggleSidebar}
+                        sidebarWidth={sidebarWidth}
+                        handleClick={handleClick}
+                        videoUrl={videoUrl}
+                        videoDescription={videoDescription}
+                    />
                     <RightSidebar isOpen={rightBarIsOpen} toggleSidebar={handleClick} />
                 </div>
             </div>

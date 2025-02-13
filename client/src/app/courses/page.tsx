@@ -38,7 +38,7 @@ const Page = () => {
             // Fetch from the server if not in Redux
             const fetchCourses = async () => {
                 try {
-                    const response = await axios.get('http://localhost:3001/api/courses'); // Replace with your API endpoint
+                    const response = await axios.get('https://ai-powered-lms.onrender.com/api/courses'); // Replace with your API endpoint
                     console.log((response.data.courses)[0]);
 
                     const courses = response.data.courses[0].courses;
@@ -49,7 +49,7 @@ const Page = () => {
                     dispatch(setCourses({ courses, subjectNames }));
 
                     setLoading(false);
-                } catch (err: any) {
+                } catch (err: unknown) {
                     console.log(err);
                     setLoading(false);
                 }
